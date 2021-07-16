@@ -5,6 +5,13 @@ import { IProperty } from "../libs/propertyInterface"
 import styles from "../styles/Home.module.css"
 import Offers from "../components/Offers"
 import { useState } from "react"
+import {
+	SiCss3,
+	SiHtml5,
+	SiNextDotJs,
+	SiTypescript,
+	SiYarn,
+} from "react-icons/si"
 
 export default function Home({
 	data,
@@ -18,38 +25,51 @@ export default function Home({
 	const [offers, setOffers] = useState<IProperty[]>([])
 
 	return (
-		<div className={styles.container}>
+		<>
 			<Head>
 				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 				<title>Challenge</title>
 			</Head>
 
-			<div>
-				<nav className={styles.navbar}>
-					<span>grupo zap</span>
-					<ul className={styles.choices}>
-						<li>
-							<a onClick={(e) => setOffers(zapData)}>zap</a>
-						</li>
-						<li>
-							<a onClick={(e) => setOffers(vrData)}>viva real</a>
-						</li>
+			<div className={styles.container}>
+				<header className={styles.header}>
+					<span className={styles.logo}>grupo zap</span>
+					<nav className={styles.nav}>
+						<a
+							onClick={(e) => {
+								setOffers(zapData)
+							}}
+						>
+							<Image src={require("../assets/logo_zap.png")} alt="Logo ZAP" />
+						</a>
+						<a onClick={(e) => setOffers(vrData)}>
+							<Image
+								src={require("../assets/logo-vivareal.png")}
+								alt="Logo ZAP"
+							/>
+						</a>
 						<div className={styles.background} />
-					</ul>
-				</nav>
+					</nav>
+				</header>
 
-				<main>
+				<main className={styles.main}>
 					<div>
-						<h2>Casas</h2>
 						<Offers data={offers} />
 					</div>
 				</main>
 
-				<footer>
-					<p>{`Code Challenge ${new Date().getFullYear()}`}</p>
+				<footer className={styles.footer}>
+					<p>{`Code Challenge ${new Date().getFullYear()}`} - Frontend</p>
+					<div className={styles.techs}>
+						<SiNextDotJs size="1.5rem" color="gray" />
+						<SiTypescript size="1.5rem" color="gray" />
+						<SiHtml5 size="1.5rem" color="gray" />
+						<SiCss3 size="1.5rem" color="gray" />
+						<SiYarn size="1.5rem" color="gray" />
+					</div>
 				</footer>
 			</div>
-		</div>
+		</>
 	)
 }
 
