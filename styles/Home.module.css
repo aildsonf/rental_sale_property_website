@@ -1,70 +1,155 @@
 .container {
 	display: flex;
+	position: relative;
 	flex-direction: column;
-	height: 100vh;
-	max-width: 1280px;
 	margin: auto;
-	font-family: "Ubuntu", sans-serif;
+	min-height: 100vh;
 }
 
 .background {
 	position: fixed;
-	z-index: -1;
+	z-index: -10;
 	inset: 0;
 	transition: 0.75s;
 }
 
-.navbar {
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
+.header {
+	display: inline-flex;
 	align-items: center;
 	justify-content: space-between;
-	width: 100%;
-	border-bottom: 2px solid black;
+	box-shadow: rgba(0, 0, 0, 0.24) 00 0 0.5rem 0;
+	background-color: white;
 }
 
-.choices {
+.logo {
+	padding-left: 1rem;
+}
+
+.nav {
 	display: inline-flex;
 	flex-wrap: wrap;
-	gap: 2rem;
 	list-style-type: none;
-	padding: 0;
+	padding-right: 1rem;
+	height: 4rem;
 }
-
-.choices a {
-	border: 2px solid;
-	border-radius: 5px;
-	padding: 5px 20px;
+.nav a {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0 1rem;
+	width: 7rem;
+	height: 100%;
 	color: white;
 	font-weight: 500;
 	cursor: pointer;
 }
-
-.choices li:first-child a {
+.nav a:first-child {
 	border-color: orange;
 	background-color: orange;
 }
-
-.choices li:nth-child(2) a {
+.nav a:nth-child(2) {
 	border-color: cornflowerblue;
 	background-color: cornflowerblue;
 }
-
-.choices li:first-child:hover ~ .background {
+.nav a:first-child:hover ~ .background {
 	background-color: rgb(255, 165, 0, 0.5);
 }
-
-.choices li:nth-child(2):hover ~ .background {
+.nav a:nth-child(2):hover ~ .background {
 	background-color: rgb(100, 149, 237, 0.5);
 }
 
+.main {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	margin: auto;
+	max-width: 1280px;
+	padding: 0 1rem;
+}
+
 .offers {
-	display: grid;
-	grid-template-columns: auto auto auto auto;
+	display: inline-flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	gap: 2rem;
+	padding: 2rem 0;
+	width: 100%;
+}
+
+.paginate {
+	display: inline-flex;
+	align-items: center;
+	grid-column: span 1;
+	justify-content: end;
+	gap: 2rem;
+	width: 100%;
+}
+.paginate button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	height: 2rem;
+	width: 2rem;
+	cursor: pointer;
 }
 
 .card {
-	border: 2px solid black;
+	display: flex;
+	flex-direction: column;
 	text-align: center;
+	background-color: white;
+	box-shadow: 0 0 0.5rem rgba(128, 128, 128, 0.479);
+	transition: all 0.3s;
+	cursor: pointer;
+}
+.card:hover {
+	transform: translateY(-12px);
+}
+
+.footer {
+	display: inline-flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	padding: 0.5rem 1rem;
+	background-color: gainsboro;
+}
+.footer p {
+	font-size: smaller;
+}
+
+.techs {
+	display: inline-flex;
+	align-items: center;
+	justify-content: space-evenly;
+	width: 10rem;
+}
+
+@media (min-width: 768px) {
+	.paginateBtns {
+		grid-column: span 2;
+	}
+}
+
+@media (min-width: 1024px) {
+	.paginateBtns {
+		grid-column: span 3;
+	}
+
+	.footer {
+		flex-direction: row;
+		justify-content: space-between;
+	}
+}
+
+@media (min-width: 1280px) {
+	.container {
+		padding: 0;
+	}
+
+	.paginateBtns {
+		grid-column: span 4;
+	}
 }
