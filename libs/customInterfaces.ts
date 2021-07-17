@@ -30,3 +30,8 @@ export interface IProperty {
 		monthlyCondoFee: string
 	}
 }
+
+export interface IData {
+	sale: Array<IProperty>
+	rent: Array<IProperty>
+}
