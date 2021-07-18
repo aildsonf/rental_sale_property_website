@@ -1,6 +1,5 @@
 import Head from "next/head"
 import Image from "next/image"
-import { useEffect } from "react"
 import { GetServerSideProps, InferGetServerSidePropsType } from "next"
 import {
 	SiCss3,
@@ -22,33 +21,10 @@ export default function Home({
 	zapData,
 	vivarealData,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
-	const handleStyleChange = (element: string, property: any, value: string) => {
-		document.getElementById(element)!.style[property] = value
-	}
-
-	useEffect(
-		() =>
-			window.addEventListener("scroll", () => {
-				window.pageYOffset > 75
-					? handleStyleChange("header", "background-color", "#b4c9c7")
-					: handleStyleChange("header", "background-color", "transparent")
-
-				window.pageYOffset > 75
-					? handleStyleChange(
-							"header",
-							"box-shadow",
-							"0 0 0.75rem rgba(128, 128, 128, 0.479)"
-					  )
-					: handleStyleChange("header", "box-shadow", "none")
-			}),
-		[]
-	)
-
 	return (
 		<>
 			<Head>
 				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-				<title>Challenge</title>
 			</Head>
 			<div className={styles.background} />
 			<header id="header" className={styles.header}>
@@ -67,11 +43,13 @@ export default function Home({
 				<main className={styles.main}>
 					<Hero />
 
-					<h2 id="options" className={styles.textColor}>
-						Escolha um de nossos parceiros:
-					</h2>
-					<span className={styles.textColor}>
-						E mostraremos ofetas que achamos relevante para você!
+					<span>
+						<h2 id="options" className={styles.textColor}>
+							Escolha um de nossos parceiros:
+						</h2>
+						<p className={styles.textColor}>
+							E mostraremos nossas ofertas para você!
+						</p>
 					</span>
 
 					<Business zap={zapData} vivaReal={vivarealData} />
