@@ -16,8 +16,19 @@ class MyDocument extends Document {
 		return (
 			<Html lang="pt-BR">
 				<Head>
-					<meta charSet="UTF-8" />
-					<meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+					<meta name="title" content="Challenge Grupo ZAP" />
+					<meta
+						name="description"
+						content="Code Challenge Grupo ZAP para pessoa desenvolvedora frontend"
+					/>
+					<meta
+						name="keywords"
+						content="tecnologia, technology, challenge, web development"
+					/>
+					<meta name="robots" content="index, follow" />
+					<meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
+					<meta name="language" content="Portuguese" />
+					<meta name="author" content="Aildson Ferreira" />
 
 					<link rel="preconnect" href="https://fonts.googleapis.com" />
 					<link
