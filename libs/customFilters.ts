@@ -1,20 +1,22 @@
+import _ from "lodash"
+
 // local imports
 import { IProperty } from "./customInterfaces"
 
-type Location = {
+export type Location = {
 	lat: number
 	lon: number
 }
 
-function isCoordinateNull(obj: Location) {
+export function isCoordinateNull(obj: Location) {
 	return obj.lat === 0 && obj.lon === 0 ? true : false
 }
 
-function isMonthlyCondoFeeNull(value: string) {
+export function isMonthlyCondoFeeNull(value: string) {
 	return Number(value) === NaN || Number(value) === 0 ? true : false
 }
 
-function isInsideZapArea(obj: Location) {
+export function isInsideZapArea(obj: Location) {
 	const box = {
 		minlon: -46.693419,
 		minlat: -23.568704,
@@ -27,6 +29,14 @@ function isInsideZapArea(obj: Location) {
 		obj.lon <= box.maxlon && obj.lon >= box.minlon ? true : false
 
 	return insideLat && insideLon ? true : false
+}
+
+export function minPriceSort(data: Array<IProperty>) {
+	// TODO
+}
+
+export function maxPriceSort(data: Array<IProperty>) {
+	// TODO
 }
 
 export const filterZap = (data: Array<IProperty>) => {
