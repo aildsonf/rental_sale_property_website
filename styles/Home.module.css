@@ -1,5 +1,28 @@
+/* Commons */
 .textColor {
 	color: #2e3332;
+}
+
+.borderRadius {
+	border-radius: 10px;
+}
+
+.btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	height: 2rem;
+	width: 2rem;
+	cursor: pointer;
+	background-color: #b4c9c7;
+	border: none;
+	border-radius: 10px;
+	box-shadow: 0 0 0.45rem rgba(128, 128, 128, 0.479);
+	transition: background-color 0.2s linear;
+}
+
+.btn:hover {
+	background-color: #9cafad;
 }
 
 /* index */
@@ -13,15 +36,11 @@
 .header {
 	display: inline-flex;
 	align-items: center;
-	position: sticky;
 	width: 100%;
 	gap: 1rem;
-	top: 0;
-	z-index: 2;
 	padding: 1rem;
 	font-size: larger;
 	background-color: transparent;
-	transition: background-color 0.3s linear;
 }
 
 .logo {
@@ -40,8 +59,8 @@
 	z-index: 1;
 }
 
-.main h2 {
-	padding-top: 3rem;
+.main span p {
+	text-align: center;
 }
 
 .background {
@@ -64,7 +83,7 @@
 	border-top: 1.5px solid gainsboro;
 }
 .footer p {
-	font-size: smaller;
+	font-size: 12px;
 }
 
 .techs {
@@ -74,29 +93,57 @@
 	width: 10rem;
 }
 
-@media (min-width: 1024px) {
-	.main {
-		margin: 0 5rem;
-	}
-	.footer {
-		flex-direction: row;
-		justify-content: space-between;
-	}
-}
-
 /* Hero Component */
-.demo {
+.hero {
 	display: flex;
-	flex-wrap: nowrap;
-	padding: 2rem 0;
-	width: max-content;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-evenly;
+	padding: 3rem 0;
+	width: 100%;
 	gap: 1rem;
-	height: 22rem !important;
 }
 
-.demo img {
-	filter: sepia(35%) !important;
+.main_title {
+	text-align: center;
+}
+
+.tip_wrapper {
+	display: none;
+	position: relative;
+	align-items: center;
+	justify-content: center;
 	border-radius: 10px;
+	width: 200px;
+	height: 200px;
+}
+
+.tip_wrapper img {
+	border-radius: 10px !important;
+	opacity: 0.9 !important;
+}
+
+.tip_description {
+	display: inline-flex;
+	align-items: flex-end;
+	justify-content: center;
+	position: absolute;
+	padding-bottom: 1rem;
+	inset: 0 0 -24px 0;
+	color: black;
+	font-size: 24px;
+	opacity: 0;
+	visibility: hidden;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	transition: opacity 0.5s, visibility 0.7s;
+	background-image: linear-gradient(transparent, #b4c9c7);
+}
+
+.tip_wrapper:hover .tip_description {
+	visibility: visible;
+	opacity: 1;
 }
 
 /* Business Component */
@@ -123,25 +170,40 @@
 	cursor: pointer;
 	background-color: #b4c9c7;
 	border: none;
+	border-radius: 10px;
 	color: #2e3332;
 	padding: 1rem;
 	font-weight: bolder;
 	box-shadow: 0 0 0.45rem rgba(128, 128, 128, 0.479);
+	transition: background-color 0.2s linear;
 }
 
 .choices button:hover {
 	background-color: #9cafad;
 }
 
+.displayOffers {
+	display: none;
+}
+
 /* Offers Component */
 .offers {
 	display: inline-flex;
+	position: relative;
 	flex-wrap: wrap;
 	align-items: center;
 	justify-content: center;
 	gap: 2rem;
 	padding: 2rem 0;
 	width: 100%;
+}
+
+.grid {
+	display: grid;
+	gap: 3rem;
+	grid-template-columns: repeat(1, minmax(0, 1fr));
+	align-items: center;
+	justify-items: center;
 }
 
 .paginate {
@@ -161,7 +223,36 @@
 	cursor: pointer;
 	background-color: #b4c9c7;
 	border: none;
-	border-radius: 2px;
+	border-radius: 10px;
+	box-shadow: 0 0 0.45rem rgba(128, 128, 128, 0.479);
+	transition: background-color 0.2s linear;
+}
+
+.paginate button:hover {
+	background-color: #9cafad;
+}
+
+.filter {
+	display: inline-flex;
+	flex-direction: row;
+	align-items: center;
+	gap: 1rem;
+	height: 2rem;
+	width: max-content;
+	padding: 0 1rem;
+	border: 1.5px solid #9cafad;
+	border-radius: 10px;
+	font-size: small;
+}
+
+.filter a {
+	text-decoration: none;
+	cursor: pointer;
+	transition: color 0.2s linear;
+}
+
+.filter a:hover {
+	color: #2e3332;
 }
 
 /* Card Component */
@@ -171,15 +262,7 @@
 	text-align: left;
 	background-color: rgba(220, 220, 220, 0.3);
 	box-shadow: 0 0 0.75rem rgba(128, 128, 128, 0.479);
-	transition: all 0.3s;
-	cursor: pointer;
-	width: fit-content;
-	height: auto;
-	z-index: 1;
-}
-
-.card:hover {
-	transform: translateY(-10px);
+	width: 100%;
 }
 
 .info {
@@ -193,6 +276,24 @@
 	padding-bottom: 1rem;
 }
 
+.info button {
+	display: inline-block;
+	background-color: #b4c9c7;
+	border: none;
+	border-radius: 10px;
+	padding: 0.5rem;
+	margin-top: 1rem;
+	width: 100%;
+	font-size: small;
+	text-align: center;
+	cursor: pointer;
+	transition: background-color 0.2s linear;
+}
+
+.info button:hover {
+	background-color: #9cafad;
+}
+
 .info span:nth-child(2) {
 	font-size: 15px;
 }
@@ -201,4 +302,106 @@
 .info span:nth-child(4) {
 	font-size: 12px;
 	color: gray;
+}
+
+.modal {
+	display: none;
+	position: fixed;
+	flex-direction: column;
+	top: 10%;
+	left: 10%;
+	margin-left: -5%;
+	padding: 1rem;
+	gap: 2rem;
+	width: 90%;
+	height: 80%;
+	background: #f6f7fb;
+	border-radius: 10px;
+	box-shadow: 0 0 0.75rem rgba(128, 128, 128, 0.479);
+	z-index: 10;
+}
+
+.modalContainer {
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+	justify-content: space-between;
+	height: 100%;
+}
+
+.modalTitle {
+	display: inline-flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0.5rem;
+	width: 100%;
+	height: fit-content;
+	border: 1.5px solid #9cafad;
+	border-radius: 10px;
+}
+
+.modalTitle button {
+	border: none;
+	border-radius: 10px;
+	width: 25px;
+	height: 25px;
+	cursor: pointer;
+	box-shadow: 0 0 0.75rem rgba(128, 128, 128, 0.479);
+}
+
+.productSpecs {
+	display: inline-flex;
+	flex-direction: column;
+	width: 100%;
+}
+
+.productIllustration {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	width: 100%;
+	height: 100%;
+}
+
+.productImages {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 1rem;
+	height: 50%;
+}
+
+.productLocation {
+	height: 50%;
+	background-color: #2e3332;
+}
+
+@media (min-width: 768px) {
+	.grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+	.tip_wrapper {
+		display: flex;
+	}
+}
+@media (min-width: 1024px) {
+	.grid {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+	.main {
+		margin: 0 5rem;
+	}
+	.footer {
+		flex-direction: row;
+		justify-content: space-between;
+	}
+	.modalContainer {
+		flex-direction: row;
+	}
+}
+@media (min-width: 1280px) {
+	.grid {
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+	}
 }
