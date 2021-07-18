@@ -32,11 +32,19 @@ export function isInsideZapArea(obj: Location) {
 }
 
 export function minPriceSort(data: Array<IProperty>) {
-	// TODO
+	const sort = data.sort(function (a, b) {
+		return Number(a.pricingInfos.price) - Number(b.pricingInfos.price)
+	})
+
+	return sort
 }
 
 export function maxPriceSort(data: Array<IProperty>) {
-	// TODO
+	const sort = data.sort(function (a, b) {
+		return Number(b.pricingInfos.price) - Number(a.pricingInfos.price)
+	})
+
+	return sort
 }
 
 export const filterZap = (data: Array<IProperty>) => {
