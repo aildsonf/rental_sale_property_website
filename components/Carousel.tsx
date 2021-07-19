@@ -17,7 +17,7 @@ export default function Carousel({ images }: Props) {
 	}
 	const handleNextImage = () => {
 		return imageNumber + 1 > images.length - 1
-			? setImageNumber(4)
+			? setImageNumber(images.length - 1)
 			: setImageNumber(imageNumber + 1)
 	}
 
