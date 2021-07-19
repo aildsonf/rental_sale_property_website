@@ -1,6 +1,10 @@
 import Head from "next/head"
 import Image from "next/image"
-import { GetServerSideProps, InferGetServerSidePropsType } from "next"
+import {
+	GetStaticProps,
+	GetStaticPropsContext,
+	InferGetStaticPropsType,
+} from "next"
 import {
 	SiCss3,
 	SiHtml5,
@@ -20,7 +24,7 @@ import Hero from "../components/Hero"
 export default function Home({
 	zapData,
 	vivarealData,
-}: InferGetServerSidePropsType<typeof getServerSideProps>) {
+}: InferGetStaticPropsType<typeof getStaticProps>) {
 	return (
 		<>
 			<Head>
@@ -52,7 +56,7 @@ export default function Home({
 						</p>
 					</span>
 
-					<Business zap={zapData} vivaReal={vivarealData} />
+					<Business zap={zapData || []} vivaReal={vivarealData || []} />
 				</main>
 			</div>
 
@@ -72,7 +76,9 @@ export default function Home({
 	)
 }
 
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
+export const getStaticProps: GetStaticProps = async (
+	ctx: GetStaticPropsContext
+) => {
 	const res = await fetch(consts.endpoint)
 	const data: Array<IProperty> = await res.json()
 
@@ -84,5 +90,6 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 			zapData,
 			vivarealData,
 		},
+		revalidate: 60,
 	}
 }
