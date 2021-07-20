@@ -12,11 +12,11 @@ type Props = {
 export default function Pagination({ updatePage, currentPage, dataLength }: Props) {
 	return (
 		<div className={styles.paginate}>
-			<button onClick={(e) => updatePage(prevPage(currentPage))}>
+			<button id="pagPrevBtn" onClick={(e) => updatePage(prevPage(currentPage))}>
 				<GrPrevious />
 			</button>
-			<p>{currentPage}</p>
-			<button onClick={(e) => updatePage(nextPage(dataLength, currentPage))}>
+			<p id="current-page">{currentPage}</p>
+			<button id="pagNextBtn" onClick={(e) => updatePage(nextPage(dataLength, currentPage))}>
 				<GrNext />
 			</button>
 		</div>
