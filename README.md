@@ -14,6 +14,7 @@ PowerShell: `./build-local.ps1`
 
 ## Deploying
 As described here, [Getting Started with Next.js and Vercel](https://vercel.com/guides/deploying-nextjs-with-vercel), any change made to the main branch on GitHub will result a deploy on Vercel.
+You can access my first deploy here: [Vercel Deployment](https://eng-zap-challenge-typescript-sand.vercel.app/).
 
 ## Testing
 I set some simple tests with [Cypress](https://docs.cypress.io/guides/overview/why-cypress). You can run using `npm run cypress:open`
