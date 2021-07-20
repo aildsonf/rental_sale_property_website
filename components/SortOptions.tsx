@@ -21,6 +21,7 @@ export default function SortOptions({ data, updateData, forceRender, resetPage }
 		<span className={styles.sort}>
 			<p>Ordenar: </p>
 			<a
+				id="ascSort"
 				onClick={(e) => {
 					handleItemsSort(minPriceSort)
 				}}
@@ -28,6 +29,7 @@ export default function SortOptions({ data, updateData, forceRender, resetPage }
 				menor preço
 			</a>
 			<a
+				id="descSort"
 				onClick={(e) => {
 					handleItemsSort(maxPriceSort)
 				}}

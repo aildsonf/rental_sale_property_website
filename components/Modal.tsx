@@ -33,7 +33,9 @@ export default function ProductInfo({ details, showModal }: Props) {
 		<div className={styles.modal}>
 			<section className={styles.modalTitle}>
 				<b>Detalhes</b>
-				<button onClick={handleClick}>&#9932;</button>
+				<button id="close-modal" onClick={handleClick}>
+					&#9932;
+				</button>
 			</section>
 
 			<section>

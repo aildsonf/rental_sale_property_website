@@ -38,11 +38,11 @@ export default function Business({ zap, vivaReal }: Props) {
 
 	return (
 		<div className={styles.business}>
-			<div className={styles.choices}>
-				<a href="#display-offers" onClick={(e) => handleClick(zap)}>
+			<div id="providers" className={styles.choices}>
+				<a id="zapOffers" href="#display-offers" onClick={(e) => handleClick(zap)}>
 					ZAP
 				</a>
-				<a href="#display-offers" onClick={(e) => handleClick(vivaReal)}>
+				<a id="vivarealOffers" href="#display-offers" onClick={(e) => handleClick(vivaReal)}>
 					VivaReal
 				</a>
 			</div>
