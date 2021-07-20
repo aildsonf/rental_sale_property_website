@@ -1,95 +1,59 @@
 import Head from "next/head"
 import Image from "next/image"
-import {
-	GetStaticProps,
-	GetStaticPropsContext,
-	InferGetStaticPropsType,
-} from "next"
-import {
-	SiCss3,
-	SiHtml5,
-	SiNextDotJs,
-	SiTypescript,
-	SiYarn,
-} from "react-icons/si"
-
+import { GetStaticProps, GetStaticPropsContext, InferGetStaticPropsType } from "next"
 // local imports
 import { IData, IProperty } from "../libs/customInterfaces"
-import { filterVivaReal, filterZap } from "../libs/customFilters"
-import styles from "../styles/Home.module.css"
+import { vivarealFilter, zapFilter } from "../libs/customFilters"
 import Business from "../components/Business"
-import consts from "../libs/consts"
 import Hero from "../components/Hero"
+import Footer from "../components/Footer"
+// css
+import styles from "../styles/Home.module.css"
 
-export default function Home({
-	zapData,
-	vivarealData,
-}: InferGetStaticPropsType<typeof getStaticProps>) {
+export default function Home({ zapData, vivarealData }: InferGetStaticPropsType<typeof getStaticProps>) {
 	return (
 		<>
 			<Head>
 				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 			</Head>
+
 			<div className={styles.background} />
+
 			<header id="header" className={styles.header}>
-				<Image
-					src={require("../assets/logo-grupozap.png")}
-					alt="Grupo ZAP Logo"
-					className={styles.logo}
-					layout="fixed"
-					width={50}
-					height={50}
-				/>
-				<p className={styles.textColor}>Grupo ZAP Challenge</p>
+				<Image src={require("../assets/logo-grupozap.png")} alt="Grupo ZAP Logo" layout="fixed" width={50} height={50} />
+				<p>Grupo ZAP Challenge</p>
 			</header>
 
-			<div className={styles.container}>
-				<main className={styles.main}>
-					<Hero />
+			<main className={styles.main}>
+				<Hero />
 
-					<span>
-						<h2 id="options" className={styles.textColor}>
-							Escolha um de nossos parceiros:
-						</h2>
-						<p className={styles.textColor}>
-							E mostraremos nossas ofertas para você!
-						</p>
-					</span>
+				<span>
+					<h2 id="options">Escolha um de nossos parceiros:</h2>
+					<p>E mostraremos nossas ofertas para você!</p>
+				</span>
 
-					<Business zap={zapData || []} vivaReal={vivarealData || []} />
-				</main>
-			</div>
+				<Business zap={zapData || []} vivaReal={vivarealData || []} />
+			</main>
 
 			<footer className={styles.footer}>
-				<p className={styles.textColor}>
-					{`Code Challenge ${new Date().getFullYear()}`} - Frontend
-				</p>
-				<div className={styles.techs}>
-					<SiNextDotJs size="1.5rem" color="#9cafad" />
-					<SiTypescript size="1.5rem" color="#9cafad" />
-					<SiHtml5 size="1.5rem" color="#9cafad" />
-					<SiCss3 size="1.5rem" color="#9cafad" />
-					<SiYarn size="1.5rem" color="#9cafad" />
-				</div>
+				<Footer />
 			</footer>
 		</>
 	)
 }
 
-export const getStaticProps: GetStaticProps = async (
-	ctx: GetStaticPropsContext
-) => {
-	const res = await fetch(consts.endpoint)
+export const getStaticProps: GetStaticProps = async (ctx: GetStaticPropsContext) => {
+	const res = await fetch("http://grupozap-code-challenge.s3-website-us-east-1.amazonaws.com/sources/source-1.json")
 	const data: Array<IProperty> = await res.json()
 
-	const zapData: IData = filterZap(data)
-	const vivarealData: IData = filterVivaReal(data)
+	const zapData: IData = zapFilter(data)
+	const vivarealData: IData = vivarealFilter(data)
 
 	return {
 		props: {
 			zapData,
 			vivarealData,
 		},
-		revalidate: 60,
+		revalidate: 3600,
 	}
 }

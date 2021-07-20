@@ -1,45 +1,39 @@
 import Image from "next/image"
-
+import { useState } from "react"
 // local imports
 import { IProperty } from "../libs/customInterfaces"
 import formatCurrency from "../libs/formatCurrency"
-import styles from "../styles/Home.module.css"
 import ProductInfo from "./Modal"
+// css
+import styles from "../styles/Home.module.css"
 
 type Props = {
-	obj: IProperty
+	property: IProperty
 }
 
-export default function Card({ obj }: Props) {
-	const handleModalUp = () => {
-		document.getElementById("product-info")!.style.display = "flex"
+export default function Card({ property }: Props) {
+	const [details, setDetails] = useState<IProperty>()
+	const [modal, setModal] = useState<boolean>(false)
+
+	const handleModalUp = (property: IProperty) => {
+		setDetails(property)
+		setModal(true)
 	}
 
 	return (
 		<div id="card" className={styles.card}>
-			<Image
-				src={obj.images[0]}
-				alt="Foto do imóvel"
-				width={232}
-				height={130}
-			/>
+			<Image src={property.images[0]} alt="Foto do imóvel" width={256} height={200} layout="fixed" objectFit="cover" />
 			<div className={styles.info}>
-				<b className={styles.textColor}>{`Preço ${formatCurrency(
-					obj.pricingInfos.price
-				)}`}</b>
-				<span
-					className={styles.textColor}
-				>{`${obj.address.neighborhood}, ${obj.address.city}`}</span>
-				<span
-					className={styles.textColor}
-				>{`${obj.bedrooms} quarto(s) | ${obj.bathrooms} banheiro(s)`}</span>
-				<span className={styles.textColor}>{`${obj.usableAreas}m²`}</span>
-				<button id="display-info" onClick={handleModalUp}>
+				<b>{formatCurrency(property.pricingInfos.price)}</b>
+				<span>{`${property.address.neighborhood}, ${property.address.city}`}</span>
+				<span>{`${property.bedrooms} quarto(s) | ${property.bathrooms} banheiro(s)`}</span>
+				<span>{`${property.usableAreas}m²`}</span>
+				<button id="display-info" onClick={(e) => handleModalUp(property)}>
 					Ver Mais
 				</button>
 			</div>
 
-			<ProductInfo data={obj} />
+			{modal && <ProductInfo details={details!} showModal={setModal} />}
 		</div>
 	)
 }
