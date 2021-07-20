@@ -15,6 +15,7 @@ export default function Home({ zapData, vivarealData }: InferGetStaticPropsType<
 		<>
 			<Head>
 				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+				<title>Code Challenge</title>
 			</Head>
 
 			<div className={styles.background} />
