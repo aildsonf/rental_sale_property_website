@@ -1,6 +1,6 @@
-Code Challenge Grupo ZAP
+# Rental/Sale Property Website
 
-# Getting Started
+## Getting Started
 This project was built using the following technologies:
 - [Next.js](https://nextjs.org/docs) v11.0.1
 - [TypeScript](https://www.typescriptlang.org/docs/) v4.3.5
