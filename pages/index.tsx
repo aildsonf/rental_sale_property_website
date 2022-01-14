@@ -12,7 +12,7 @@ import styles from "../styles/Home.module.css"
 
 export default function Home({ zapData, vivarealData }: InferGetStaticPropsType<typeof getStaticProps>) {
 	return (
-		<>
+		<div className={styles.content}>
 			<Head>
 				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 				<title>Code Challenge</title>
@@ -39,7 +39,7 @@ export default function Home({ zapData, vivarealData }: InferGetStaticPropsType<
 			<footer className={styles.footer}>
 				<Footer />
 			</footer>
-		</>
+		</div>
 	)
 }
 

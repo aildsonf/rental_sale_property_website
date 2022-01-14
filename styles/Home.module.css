@@ -1,4 +1,10 @@
 /* index */
+.content {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
 .header {
 	display: flex;
 	align-items: center;
@@ -25,7 +31,6 @@
 	position: relative;
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
 	align-items: center;
 	padding: 3rem 1rem;
 	margin: 0 1rem;
